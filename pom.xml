@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.upaio</groupId>
+		<artifactId>microservice-starter-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<groupId>com.upaio</groupId>
+	<artifactId>chassis-microservice</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>chassis-microservice</name>
+	<description>Chassis Microservice</description>
+	<properties>
+		<!-- Internal configuration -->
+		<java.version>19</java.version>
+		<project.microservice-chassis-starter.version>0.0.1-SNAPSHOT</project.microservice-chassis-starter.version>
+		<!-- Third party dependencies -->
+		<spring-cloud.version>2021.0.5</spring-cloud.version>
+		<project.jacoco-maven-plugin.version>0.8.8</project.jacoco-maven-plugin.version>
+		<!-- SonarCloud configuration -->
+		<sonar.organization>upa-io</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	</properties>
+	<dependencies>
+			<dependency>
+				<groupId>com.upaio</groupId>
+				<artifactId>microservice-chassis-starter</artifactId>
+			</dependency>
+	</dependencies>
+	    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.7</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+				    <configuration>
+				        <release>${java.version}</release>
+				    </configuration>
+			</plugin>
+        </plugins>
+    </build>
+</project>
