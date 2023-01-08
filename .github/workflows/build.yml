@@ -18,6 +18,39 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '19'
+      - name: maven-settings-xml-action
+        uses: whelk-io/maven-settings-xml-action@v21
+        with:
+          repositories: >
+            [
+              {
+                "id": "central",
+                "url": "https://repo1.maven.org/maven2"
+              },
+              {
+                "id": "upaio-microservice-chassis-starter",
+                "url": "https://maven.pkg.github.com/upa-io/microservice-chassis-starter",
+                "snapshots": {
+                  "enabled": "true"
+                }
+              },
+              {
+                "id": "microservice-starter-parent",
+                "url": "https://maven.pkg.github.com/upa-io/microservice-starter-parent",
+                "snapshots": {
+                  "enabled": "true"
+                }
+              }
+            ]
+          servers: >
+            [
+              {
+                "id": "github",
+                "username": "jeaguirre",
+                "password": "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"
+              }
+            ]
+          output_file: .m2/settings.xml
       - name: Cache SonarCloud packages
         uses: actions/cache@v3.2.2
         with:
