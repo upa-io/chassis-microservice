@@ -22,7 +22,7 @@ jobs:
         uses: whelk-io/maven-settings-xml-action@v21
         with:
           repositories: |
-            '[
+            [
               {
                 "id": "central",
                 "url": "https://repo1.maven.org/maven2"
@@ -41,15 +41,15 @@ jobs:
                   "enabled": "true"
                 }
               }
-            ]'
+            ]
           servers: |
-            '[
+            [
               {
                 "id": "github",
                 "username": "jeaguirre",
                 "password": "${{env.ARTIFACTORY_TOKEN}}"
               }
-            ]'
+            ]
       - name: Cache SonarCloud packages
         uses: actions/cache@v3.2.2
         with:
@@ -68,5 +68,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           BUILD_ENV: 'github'
           ARTIFACTORY_USERNAME_REF: 'jeaguirre'
-          ARTIFACTORY_TOKEN_REF: ${{secrets.ARTIFACTORY_TOKEN}}
+          ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=upa-io_chassis-microservice
