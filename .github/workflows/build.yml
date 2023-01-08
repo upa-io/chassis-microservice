@@ -47,7 +47,7 @@ jobs:
               {
                 "id": "github",
                 "username": "jeaguirre",
-                "password": "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"
+                "password": "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"
               }
             ]
       - name: Cache SonarCloud packages
