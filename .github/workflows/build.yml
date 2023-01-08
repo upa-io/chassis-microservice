@@ -47,7 +47,7 @@ jobs:
               {
                 "id": "github",
                 "username": "jeaguirre",
-                "password": "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"
+                "password": ${{env.ARTIFACTORY_TOKEN}}
               }
             ]
       - name: Cache SonarCloud packages
@@ -64,8 +64,9 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze in SonarCloud
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           BUILD_ENV: 'github'
           ARTIFACTORY_USERNAME_REF: 'jeaguirre'
-          ARTIFACTORY_TOKEN_REF: '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'
+          ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=upa-io_chassis-microservice
