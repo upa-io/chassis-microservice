@@ -47,7 +47,7 @@ jobs:
               {
                 "id": "github",
                 "username": "jeaguirre",
-                "password": "${{env.ARTIFACTORY_TOKEN}}"
+                "password": "${{secrets.ARTIFACTORY_TOKEN}}"
               }
             ]
       - name: Cache SonarCloud packages
