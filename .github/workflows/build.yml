@@ -68,5 +68,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           BUILD_ENV: 'github'
           ARTIFACTORY_USERNAME_REF: 'jeaguirre'
-          ARTIFACTORY_TOKEN_REF: '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'
+          ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=upa-io_chassis-microservice
