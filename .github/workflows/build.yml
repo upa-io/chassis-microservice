@@ -50,7 +50,6 @@ jobs:
                 "password": "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"
               }
             ]
-          output_file: .m2/settings.xml
       - name: Cache SonarCloud packages
         uses: actions/cache@v3.2.2
         with:
@@ -65,6 +64,9 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze in SonarCloud
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          BUILD_ENV: 'github'
+          ARTIFACTORY_USERNAME_REF: 'jeaguirre'
+          ARTIFACTORY_TOKEN_REF: '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'
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=upa-io_chassis-microservice
