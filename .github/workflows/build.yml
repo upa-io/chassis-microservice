@@ -64,8 +64,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=upa-io_chassis-microservice
-      - name: Maven Release
-        run: mvn release:prepare release:perform -B -s /home/runner/.m2/settings.xml -DreleaseVersion=${{ github.event.inputs.releaseVersion }} -DdevelopmentVersion=${{ github.event.inputs.developmentVersion }}
-        env:
-          CI_DEPLOY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
-          CI_DEPLOY_PASSWORD: ${{ secrets.ARTIFACTORY_TOKEN }}
+      - name: Maven Deploy to JFrog Artifactory Cloud
+        run: mvn -s /home/runner/.m2/settings.xml deploy
