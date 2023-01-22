@@ -25,28 +25,25 @@ jobs:
             [
               {
                 "id": "central",
-                "url": "https://repo1.maven.org/maven2"
+                "name": "upaio-libs-release",
+                "url": "https://upaio.jfrog.io/artifactory/upaio-libs-release"
               },
               {
-                "id": "upaio-microservice-chassis-starter",
-                "url": "https://maven.pkg.github.com/upa-io/microservice-chassis-starter",
-                "snapshots": {
-                  "enabled": "true"
-                }
-              },
-              {
-                "id": "microservice-starter-parent",
-                "url": "https://maven.pkg.github.com/upa-io/microservice-starter-parent",
-                "snapshots": {
-                  "enabled": "true"
-                }
+                "id": "snapshots",
+                "name": "upaio-libs-snapshot",
+                "url": "https://upaio.jfrog.io/artifactory/upaio-libs-snapshot"
               }
             ]
           servers: >
             [
               {
-                "id": "github",
-                "username": "jeaguirre",
+                "id": "central",
+                "username": "info.aguirre.jesus@gmail.com",
+                "password": "${{secrets.ARTIFACTORY_TOKEN}}"
+              },
+              {
+                "id": "snapshots",
+                "username": "info.aguirre.jesus@gmail.com",
                 "password": "${{secrets.ARTIFACTORY_TOKEN}}"
               }
             ]
@@ -66,7 +63,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          BUILD_ENV: 'github'
-          ARTIFACTORY_USERNAME_REF: 'jeaguirre'
-          ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=upa-io_chassis-microservice
