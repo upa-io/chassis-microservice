@@ -11,7 +11,7 @@
 
 	<groupId>com.upaio</groupId>
 	<artifactId>chassis-microservice</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>chassis-microservice</name>
 	<description>Chassis Microservice</description>
 	<properties>
