@@ -38,12 +38,12 @@ jobs:
             [
               {
                 "id": "central",
-                "username": "info.aguirre.jesus@gmail.com",
+                "username": "${{secrets.ARTIFACTORY_USERNAME}}",
                 "password": "${{secrets.ARTIFACTORY_TOKEN}}"
               },
               {
                 "id": "snapshots",
-                "username": "info.aguirre.jesus@gmail.com",
+                "username": "${{secrets.ARTIFACTORY_USERNAME}}",
                 "password": "${{secrets.ARTIFACTORY_TOKEN}}"
               }
             ]
